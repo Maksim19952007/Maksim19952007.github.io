@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://maksim19952007.github.io/okna-ufa/sitemap.xml
