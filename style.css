@@ -525,6 +525,12 @@ h2 {
   height: 17px;
 }
 
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
 .lightbox {
   position: fixed;
   inset: 0;
@@ -1132,6 +1138,10 @@ h2 {
     grid-auto-columns: calc((100% - 16px) / 2);
   }
 
+  .reviews-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .cards,
   .contacts-grid {
     grid-template-columns: 1fr 1fr;
@@ -1206,6 +1216,10 @@ h2 {
 
   .reviews-slider {
     grid-auto-columns: 100%;
+  }
+
+  .reviews-grid {
+    grid-template-columns: 1fr;
   }
 
   .works-img {
