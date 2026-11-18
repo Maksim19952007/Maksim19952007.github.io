@@ -1107,6 +1107,21 @@ h2 {
   grid-template-columns: repeat(4, 1fr);
 }
 
+.contact-link-max {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 12px 26px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #046ef4 0%, #572dff 100%);
+  color: #fff;
+  font-size: 15px;
+}
+
+.contact-link-max:hover {
+  color: #fff;
+  background: linear-gradient(135deg, #01c5c8 0%, #046ef4 50%, #572dff 100%);
+}
+
 .footer {
   background: var(--bg-dark);
   border-top: 1px solid var(--border);
