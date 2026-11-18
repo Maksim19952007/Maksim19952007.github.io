@@ -774,6 +774,51 @@ h2 {
   grid-template-columns: repeat(2, 1fr);
 }
 
+.price-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.price-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 26px 24px;
+  text-align: center;
+}
+
+.price-card h3 {
+  margin: 0 0 10px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.price-value {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--blue);
+}
+
+.price-from {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-right: 6px;
+}
+
+.price-factors {
+  margin: 36px 0 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.price-factors + .benefits {
+  margin-top: 20px;
+}
+
 .benefit {
   display: flex;
   flex-direction: column;
@@ -1219,6 +1264,10 @@ h2 {
   }
 
   .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .price-cards {
     grid-template-columns: 1fr;
   }
 
