@@ -693,6 +693,19 @@ h2 {
   line-height: 1.55;
 }
 
+.card-link {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.card-link:hover {
+  text-decoration: underline;
+}
+
 .benefits-top {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 400px;
@@ -749,6 +762,10 @@ h2 {
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   margin-top: 40px;
+}
+
+.benefits-two {
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .benefit {
@@ -870,6 +887,10 @@ h2 {
 .delivery-note a {
   color: var(--blue);
   font-weight: 600;
+}
+
+.delivery .btn {
+  margin-top: 20px;
 }
 
 .faq {
