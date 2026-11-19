@@ -774,6 +774,14 @@ h2 {
   grid-template-columns: repeat(2, 1fr);
 }
 
+.benefits-three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.price-cards-three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .price-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1204,6 +1212,14 @@ h2 {
 
   .reviews-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .price-cards-three {
+    grid-template-columns: 1fr;
+  }
+
+  .benefits.benefits-three {
+    grid-template-columns: 1fr;
   }
 
   .cards,
