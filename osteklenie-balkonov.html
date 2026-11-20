@@ -226,13 +226,20 @@
     <section class="section section-tint" id="gallery">
       <div class="container">
         <h2>Наши работы по остеклению <mark>балконов и лоджий</mark></h2>
-        <p class="section-desc">Реальные балконы и лоджии, которые мы остеклили в Уфе. Конструкции напрямую от завода-производителя, бесплатный замер и гарантия по договору.</p>
-        <div class="gallery-grid">
-          <div class="gallery-item"><img src="assets/balcony-work-01.jpg" alt="Остеклённый балкон с белым профнастилом" loading="lazy"></div>
-          <div class="gallery-item"><img src="assets/balcony-work-02.jpg" alt="Остеклённая лоджия с окном ПВХ" loading="lazy"></div>
-          <div class="gallery-item"><img src="assets/balcony-work-03.jpg" alt="Балкон после остекления — белый профнастил" loading="lazy"></div>
-          <div class="gallery-item"><img src="assets/balcony-work-04.jpg" alt="Остекление балкона — окно ПВХ и белая отделка" loading="lazy"></div>
-          <div class="gallery-item"><img src="assets/balcony-work-05.jpg" alt="Готовый балкон после остекления" loading="lazy"></div>
+        <p class="section-desc">Реальные балконы и лоджии, которые мы остеклили в Уфе. В галерее есть фото «до и после» — так выглядят балконы до остекления и после нашей работы. Конструкции напрямую от завода-производителя, бесплатный замер и гарантия по договору. Нажмите на фото, чтобы открыть его на весь экран.</p>
+        <div class="gallery-slider-wrap">
+          <button type="button" class="works-arrow" id="gallery-prev" aria-label="Предыдущие фото">&#8592;</button>
+          <div class="gallery-grid" id="gallery-grid">
+            <div class="gallery-item"><img src="assets/balcony-work-06.jpg" alt="Фасад дома с остеклёнными балконами и лоджиями в Уфе" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/balcony-work-01.jpg" alt="Остеклённый балкон с белым профнастилом" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/balcony-work-02.jpg" alt="Остеклённая лоджия с окном ПВХ" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/balcony-work-03.jpg" alt="Балкон после остекления — белый профнастил" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/balcony-work-04.jpg" alt="Остекление балкона — окно ПВХ и белая отделка" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/balcony-work-05.jpg" alt="Готовый балкон после остекления" loading="lazy"></div>
+            <div class="gallery-item"><span class="gallery-badge">До и после</span><img src="assets/balcony-work-07.jpg" alt="Балкон до и после остекления — новая отделка белым профнастилом и старое дерево" loading="lazy"></div>
+            <div class="gallery-item"><span class="gallery-badge">До и после</span><img src="assets/balcony-work-08.jpg" alt="Балкон до и после остекления — окно ПВХ с новым профнастилом и старое дерево" loading="lazy"></div>
+          </div>
+          <button type="button" class="works-arrow" id="gallery-next" aria-label="Следующие фото">&#8594;</button>
         </div>
       </div>
     </section>
@@ -473,6 +480,21 @@
         lightboxImg.src = '';
         document.body.style.overflow = '';
       }
+    });
+
+    var galleryGrid = document.getElementById('gallery-grid');
+
+    function galleryStep() {
+      var item = galleryGrid.querySelector('.gallery-item');
+      return item ? item.getBoundingClientRect().width + 16 : 260;
+    }
+
+    document.getElementById('gallery-prev').addEventListener('click', function () {
+      galleryGrid.scrollBy({ left: -galleryStep() * 6, behavior: 'smooth' });
+    });
+
+    document.getElementById('gallery-next').addEventListener('click', function () {
+      galleryGrid.scrollBy({ left: galleryStep() * 6, behavior: 'smooth' });
     });
 
     var lightbox = document.getElementById('lightbox');
