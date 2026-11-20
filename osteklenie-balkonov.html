@@ -366,6 +366,10 @@
     </section>
   </main>
 
+  <div class="lightbox" id="lightbox" hidden>
+    <img src="" alt="">
+  </div>
+
   <div class="call-modal" id="call-modal" hidden>
     <div class="call-modal-card">
       <button type="button" class="call-modal-close" id="call-modal-close" aria-label="Закрыть">&#10005;</button>
@@ -464,6 +468,30 @@
       if (e.key === 'Escape' && !callModal.hidden) {
         closeCallModal();
       }
+      if (e.key === 'Escape' && !lightbox.hidden) {
+        lightbox.hidden = true;
+        lightboxImg.src = '';
+        document.body.style.overflow = '';
+      }
+    });
+
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = lightbox.querySelector('img');
+    var galleryImgs = document.querySelectorAll('.gallery-item img');
+
+    for (var k = 0; k < galleryImgs.length; k++) {
+      galleryImgs[k].addEventListener('click', function (e) {
+        lightboxImg.src = e.target.src;
+        lightboxImg.alt = e.target.alt;
+        lightbox.hidden = false;
+        document.body.style.overflow = 'hidden';
+      });
+    }
+
+    lightbox.addEventListener('click', function () {
+      lightbox.hidden = true;
+      lightboxImg.src = '';
+      document.body.style.overflow = '';
     });
   </script>
 </body>
