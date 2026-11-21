@@ -412,6 +412,9 @@
           .then(function (response) {
             if (response.ok) {
               form.reset();
+              if (typeof ym === 'function') {
+                ym(114295345, 'reachGoal', 'lead_form');
+              }
               if (status) {
                 status.textContent = 'Заявка отправлена! Мы перезвоним вам в ближайшее время.';
                 status.classList.remove('lead-status-error');
