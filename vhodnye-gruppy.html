@@ -237,6 +237,40 @@
       </div>
     </section>
 
+    <section class="section section-tint" id="gallery">
+      <div class="container">
+        <h2>Наши работы по установке <mark>входных групп</mark></h2>
+        <p class="section-desc">Реальные входные группы, которые мы изготовили и установили в Уфе: для частных домов, крылец и веранд, офисов и магазинов. Конструкции напрямую от завода-производителя, бесплатный замер и гарантия по договору. Нажмите на фото, чтобы открыть его на весь экран.</p>
+        <div class="gallery-slider-wrap">
+          <button type="button" class="works-arrow" id="gallery-prev" aria-label="Предыдущие фото">&#8592;</button>
+          <div class="gallery-grid" id="gallery-grid">
+            <div class="gallery-item"><img src="assets/gruppy-work-01.jpg" alt="Белая входная группа ПВХ со стеклянной дверью на доме с каменным цоколем" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/gruppy-work-02.jpg" alt="Белая входная группа ПВХ с дверью и окном для частного дома" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/gruppy-work-03.jpg" alt="Остеклённая веранда с входной группой ПВХ на кирпичном основании" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/gruppy-work-04.jpg" alt="Входная группа ПВХ с коричневой ламинацией на остеклённом крыльце" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/gruppy-work-05.jpg" alt="Витринная входная группа с тёмным профилем для магазина" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/gruppy-work-06.jpg" alt="Входная группа ПВХ с остеклением крыльца вокруг кирпичной колонны" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/gruppy-work-07.jpg" alt="Остекление входной группы между кирпичными колоннами дома" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/gruppy-work-08.jpg" alt="Входная группа с белым профилем ПВХ на кирпичном доме зимой" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/gruppy-work-09.jpg" alt="Остеклённая веранда с входной группой ПВХ на кирпичном доме" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/gruppy-work-10.jpg" alt="Белая входная группа ПВХ с панорамным остеклением для дома" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/gruppy-work-11.jpg" alt="Входная группа ПВХ на кирпичном крыльце во время монтажа" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/gruppy-work-12.jpg" alt="Входная группа с белым профилем ПВХ на красном кирпичном доме" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/gruppy-work-13.jpg" alt="Тёмная входная группа ПВХ с матовым стеклом изнутри" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/gruppy-work-14.jpg" alt="Входная группа с остеклением крыльца для деревянного дома" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/gruppy-work-15.jpg" alt="Остекление крыльца входной группой ПВХ на деревянном доме" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/gruppy-work-16.jpg" alt="Входная группа ПВХ с остеклением на доме из кирпича и камня" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/gruppy-work-17.jpg" alt="Входная группа ПВХ с белым козырьком на доме с коричневым кирпичом" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/gruppy-work-18.jpg" alt="Тёмная входная группа с остеклением крыльца и ступенями" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/gruppy-work-19.jpg" alt="Тёмная входная группа ПВХ со стеклом на кирпичном доме" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/gruppy-work-20.jpg" alt="Входная группа с тёмным остеклением и крышей над крыльцом" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/gruppy-work-21.jpg" alt="Входная группа ПВХ с дверью и окнами на кирпичном доме" loading="lazy"></div>
+          </div>
+          <button type="button" class="works-arrow" id="gallery-next" aria-label="Следующие фото">&#8594;</button>
+        </div>
+      </div>
+    </section>
+
     <section class="section section-alt" id="warranty">
       <div class="container">
         <h2>Гарантия на входные группы</h2>
@@ -366,6 +400,10 @@
     </section>
   </main>
 
+  <div class="lightbox" id="lightbox" hidden>
+    <img src="" alt="">
+  </div>
+
   <div class="call-modal" id="call-modal" hidden>
     <div class="call-modal-card">
       <button type="button" class="call-modal-close" id="call-modal-close" aria-label="Закрыть">&#10005;</button>
@@ -464,6 +502,44 @@
       if (e.key === 'Escape' && !callModal.hidden) {
         closeCallModal();
       }
+      if (e.key === 'Escape' && !lightbox.hidden) {
+        lightbox.hidden = true;
+        lightboxImg.src = '';
+        document.body.style.overflow = '';
+      }
+    });
+
+    var galleryGrid = document.getElementById('gallery-grid');
+
+    function galleryPageWidth() {
+      return galleryGrid.clientWidth;
+    }
+
+    document.getElementById('gallery-prev').addEventListener('click', function () {
+      galleryGrid.scrollBy({ left: -galleryPageWidth(), behavior: 'smooth' });
+    });
+
+    document.getElementById('gallery-next').addEventListener('click', function () {
+      galleryGrid.scrollBy({ left: galleryPageWidth(), behavior: 'smooth' });
+    });
+
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = lightbox.querySelector('img');
+    var galleryImgs = document.querySelectorAll('.gallery-item img');
+
+    for (var k = 0; k < galleryImgs.length; k++) {
+      galleryImgs[k].addEventListener('click', function (e) {
+        lightboxImg.src = e.target.src;
+        lightboxImg.alt = e.target.alt;
+        lightbox.hidden = false;
+        document.body.style.overflow = 'hidden';
+      });
+    }
+
+    lightbox.addEventListener('click', function () {
+      lightbox.hidden = true;
+      lightboxImg.src = '';
+      document.body.style.overflow = '';
     });
   </script>
 </body>
