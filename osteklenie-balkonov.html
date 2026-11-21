@@ -486,17 +486,16 @@
 
     var galleryGrid = document.getElementById('gallery-grid');
 
-    function galleryStep() {
-      var item = galleryGrid.querySelector('.gallery-item');
-      return item ? item.getBoundingClientRect().width + 16 : 260;
+    function galleryPageWidth() {
+      return galleryGrid.clientWidth;
     }
 
     document.getElementById('gallery-prev').addEventListener('click', function () {
-      galleryGrid.scrollBy({ left: -galleryStep() * 6, behavior: 'smooth' });
+      galleryGrid.scrollBy({ left: -galleryPageWidth(), behavior: 'smooth' });
     });
 
     document.getElementById('gallery-next').addEventListener('click', function () {
-      galleryGrid.scrollBy({ left: galleryStep() * 6, behavior: 'smooth' });
+      galleryGrid.scrollBy({ left: galleryPageWidth(), behavior: 'smooth' });
     });
 
     var lightbox = document.getElementById('lightbox');
