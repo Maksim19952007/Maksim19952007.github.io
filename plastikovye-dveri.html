@@ -234,6 +234,31 @@
       </div>
     </section>
 
+    <section class="section section-tint" id="gallery">
+      <div class="container">
+        <h2>Наши работы по установке <mark>пластиковых дверей</mark></h2>
+        <p class="section-desc">Реальные двери, которые мы изготовили и установили в Уфе: входные в дом, на дачу и в квартиру. Конструкции напрямую от завода-производителя, бесплатный замер и гарантия по договору. Нажмите на фото, чтобы открыть его на весь экран.</p>
+        <div class="gallery-slider-wrap">
+          <button type="button" class="works-arrow" id="gallery-prev" aria-label="Предыдущие фото">&#8592;</button>
+          <div class="gallery-grid" id="gallery-grid">
+            <div class="gallery-item"><img src="assets/door-work-01.jpg" alt="Входная группа ПВХ с двустворчатой стеклянной дверью" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/door-work-02.jpg" alt="Входная пластиковая дверь с коричневой ламинацией в кирпичном доме" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/door-work-03.jpg" alt="Входная дверь ПВХ с ламинацией и стеклопакетом в кирпичном доме" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/door-work-04.jpg" alt="Белая пластиковая входная дверь в доме из газобетона" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/door-work-05.jpg" alt="Пластиковая дверь с коричневой ламинацией в деревянном доме" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/door-work-06.jpg" alt="Входная дверь ПВХ в стене с каменной отделкой" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/door-work-07.jpg" alt="Пластиковая дверь со стеклом в деревянном доме" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/door-work-08.jpg" alt="Входная пластиковая дверь изнутри после установки" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/door-work-09.jpg" alt="Новая пластиковая дверь в защитной плёнке перед установкой" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/door-work-10.jpg" alt="Новая входная дверь ПВХ в защитной плёнке" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/door-work-11.jpg" alt="Новая белая пластиковая дверь в защитной плёнке" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/door-work-12.jpg" alt="Доставка пластиковой двери на объект в Уфе" loading="lazy"></div>
+          </div>
+          <button type="button" class="works-arrow" id="gallery-next" aria-label="Следующие фото">&#8594;</button>
+        </div>
+      </div>
+    </section>
+
     <section class="section section-alt" id="warranty">
       <div class="container">
         <h2>Гарантия на двери</h2>
@@ -363,6 +388,10 @@
     </section>
   </main>
 
+  <div class="lightbox" id="lightbox" hidden>
+    <img src="" alt="">
+  </div>
+
   <div class="call-modal" id="call-modal" hidden>
     <div class="call-modal-card">
       <button type="button" class="call-modal-close" id="call-modal-close" aria-label="Закрыть">&#10005;</button>
@@ -461,6 +490,44 @@
       if (e.key === 'Escape' && !callModal.hidden) {
         closeCallModal();
       }
+      if (e.key === 'Escape' && !lightbox.hidden) {
+        lightbox.hidden = true;
+        lightboxImg.src = '';
+        document.body.style.overflow = '';
+      }
+    });
+
+    var galleryGrid = document.getElementById('gallery-grid');
+
+    function galleryPageWidth() {
+      return galleryGrid.clientWidth;
+    }
+
+    document.getElementById('gallery-prev').addEventListener('click', function () {
+      galleryGrid.scrollBy({ left: -galleryPageWidth(), behavior: 'smooth' });
+    });
+
+    document.getElementById('gallery-next').addEventListener('click', function () {
+      galleryGrid.scrollBy({ left: galleryPageWidth(), behavior: 'smooth' });
+    });
+
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = lightbox.querySelector('img');
+    var galleryImgs = document.querySelectorAll('.gallery-item img');
+
+    for (var k = 0; k < galleryImgs.length; k++) {
+      galleryImgs[k].addEventListener('click', function (e) {
+        lightboxImg.src = e.target.src;
+        lightboxImg.alt = e.target.alt;
+        lightbox.hidden = false;
+        document.body.style.overflow = 'hidden';
+      });
+    }
+
+    lightbox.addEventListener('click', function () {
+      lightbox.hidden = true;
+      lightboxImg.src = '';
+      document.body.style.overflow = '';
     });
   </script>
 </body>
