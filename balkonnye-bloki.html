@@ -233,6 +233,37 @@
       </div>
     </section>
 
+    <section class="section section-tint" id="gallery">
+      <div class="container">
+        <h2>Наши работы по установке <mark>балконных блоков</mark></h2>
+        <p class="section-desc">Реальные балконные блоки, которые мы изготовили и установили в Уфе: окно и балконная дверь одним комплектом, белый профиль и ламинация под дерево. Конструкции напрямую от завода-производителя, бесплатный замер и гарантия по договору. Нажмите на фото, чтобы открыть его на весь экран.</p>
+        <div class="gallery-slider-wrap">
+          <button type="button" class="works-arrow" id="gallery-prev" aria-label="Предыдущие фото">&#8592;</button>
+          <div class="gallery-grid" id="gallery-grid">
+            <div class="gallery-item"><img src="assets/bloki-work-01.jpg" alt="Белый балконный блок с окном и дверью в светлой комнате" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/bloki-work-02.jpg" alt="Балконный блок ПВХ с дверью во время монтажа в квартире" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/bloki-work-03.jpg" alt="Балконный блок с коричневой ламинацией под дерево" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/bloki-work-04.jpg" alt="Белый балконный блок с открытой дверью на балкон" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/bloki-work-05.jpg" alt="Балконный блок с окном и дверью в комнате с деревянной отделкой" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/bloki-work-06.jpg" alt="Белый балконный блок со стеклянными створками на кухне" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/bloki-work-07.jpg" alt="Новый белый балконный блок после установки" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/bloki-work-08.jpg" alt="Балконный блок ПВХ с видом на зелёный двор" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/bloki-work-09.jpg" alt="Белый балконный блок с окном и дверью во время ремонта" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/bloki-work-10.jpg" alt="Балконный блок с ламинацией на лоджии с видом на город" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/bloki-work-11.jpg" alt="Белая балконная дверь с окном у кирпичной стены" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/bloki-work-12.jpg" alt="Балконный блок ПВХ с открывающейся дверью в комнате" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/bloki-work-13.jpg" alt="Белый балконный блок с открытыми створками" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/bloki-work-14.jpg" alt="Новый балконный блок с белым подоконником после монтажа" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/bloki-work-15.jpg" alt="Белый балконный блок со стеклопакетами в светлой комнате" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/bloki-work-16.jpg" alt="Балконный блок с белым профилем у деревянной отделки" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/bloki-work-17.jpg" alt="Белый балконный блок с дверью на балкон в деревянной отделке" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/bloki-work-18.jpg" alt="Балконный блок ПВХ в комнате во время ремонта" loading="lazy"></div>
+          </div>
+          <button type="button" class="works-arrow" id="gallery-next" aria-label="Следующие фото">&#8594;</button>
+        </div>
+      </div>
+    </section>
+
     <section class="section section-alt" id="warranty">
       <div class="container">
         <h2>Гарантия на балконные блоки</h2>
@@ -362,6 +393,10 @@
     </section>
   </main>
 
+  <div class="lightbox" id="lightbox" hidden>
+    <img src="" alt="">
+  </div>
+
   <div class="call-modal" id="call-modal" hidden>
     <div class="call-modal-card">
       <button type="button" class="call-modal-close" id="call-modal-close" aria-label="Закрыть">&#10005;</button>
@@ -463,6 +498,44 @@
       if (e.key === 'Escape' && !callModal.hidden) {
         closeCallModal();
       }
+      if (e.key === 'Escape' && !lightbox.hidden) {
+        lightbox.hidden = true;
+        lightboxImg.src = '';
+        document.body.style.overflow = '';
+      }
+    });
+
+    var galleryGrid = document.getElementById('gallery-grid');
+
+    function galleryPageWidth() {
+      return galleryGrid.clientWidth;
+    }
+
+    document.getElementById('gallery-prev').addEventListener('click', function () {
+      galleryGrid.scrollBy({ left: -galleryPageWidth(), behavior: 'smooth' });
+    });
+
+    document.getElementById('gallery-next').addEventListener('click', function () {
+      galleryGrid.scrollBy({ left: galleryPageWidth(), behavior: 'smooth' });
+    });
+
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = lightbox.querySelector('img');
+    var galleryImgs = document.querySelectorAll('.gallery-item img');
+
+    for (var k = 0; k < galleryImgs.length; k++) {
+      galleryImgs[k].addEventListener('click', function (e) {
+        lightboxImg.src = e.target.src;
+        lightboxImg.alt = e.target.alt;
+        lightbox.hidden = false;
+        document.body.style.overflow = 'hidden';
+      });
+    }
+
+    lightbox.addEventListener('click', function () {
+      lightbox.hidden = true;
+      lightboxImg.src = '';
+      document.body.style.overflow = '';
     });
   </script>
 </body>
